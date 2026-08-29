@@ -1,0 +1,5 @@
+print("====================================")
+print(" AI LANDSLIDE MONITORING SYSTEM")
+print("====================================")
+print("Project started successfully!")
+print("NER Landslide Risk Monitoring")
