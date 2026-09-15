@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo Safe</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.85;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.10);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: #00c853;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #00a844;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(0,0,0,0.25);
+            text-align: center;
+        }
+
+        .result h2 {
+            margin-top: 0;
+        }
+
+        .score {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 650px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🌍 Geo Safe</h1>
+        <p>AI-Based Early Warning & Landslide Risk Monitoring System</p>
+    </div>
+
+    <div class="card">
+
+        <form method="POST">
+
+            <div class="grid">
+
+                <div>
+                    <label>🌧️ Rainfall (mm)</label>
+                    <input type="number" step="any" name="rainfall"
+                           placeholder="Enter rainfall" required>
+                </div>
+
+                <div>
+                    <label>🌱 Soil Moisture (%)</label>
+                    <input type="number" step="any" name="soil_moisture"
+                           placeholder="Enter soil moisture" required>
+                </div>
+
+                <div>
+                    <label>⛰️ Slope Angle (°)</label>
+                    <input type="number" step="any" name="slope"
+                           placeholder="Enter slope angle" required>
+                </div>
+
+                <div>
+                    <label>💧 Water Level (%)</label>
+                    <input type="number" step="any" name="water_level"
+                           placeholder="Enter water level" required>
+                </div>
+
+            </div>
+
+            <button type="submit">
+                🔍 Analyze Landslide Risk
+            </button>
+
+        </form>
+
+        {% if result %}
+
+        <div class="result">
+
+            <h2>{{ result }}</h2>
+
+            <div class="score">
+                {{ score }}%
+            </div>
+
+            <p>{{ explanation }}</p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <div class="footer">
+        Geo Safe | Predict Early. Act Faster. Stay Safe.
+    </div>
+
+</div>
+
+</body>
+</html>
